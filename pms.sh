@@ -7,7 +7,7 @@ RUNNING="false";
 # 检查应用是否在运行
 function check() {
 	echo "check running status..."
-	tpid=`ps -ef|grep -n " \-\-name=$APP_NAME$"|grep -v grep|grep -v kill|awk '{print $3}'`
+	tpid=`ps -ef|grep -n " java.*--name=$APP_NAME$"|grep -v grep|grep -v kill|awk '{print $2}'`
 	if [ ${tpid} ]; then
     	echo 'App is running.'
     	RUNNING="true"
@@ -42,7 +42,7 @@ function start() {
 
 # 停止程序
 function stop() {
-	tpid=`ps -ef|grep -n " \-\-name=$APP_NAME$"|grep -v grep|grep -v kill|awk '{print $3}'`
+	tpid=`ps -ef|grep -n " java.*--name=$APP_NAME$"|grep -v grep|grep -v kill|awk '{print $2}'`
 	if [ ${tpid} ]; then
 	    echo 'Stop Process...'
 	    kill -15 ${tpid}
@@ -50,7 +50,7 @@ function stop() {
 	    for ((i=0; i<10; ++i))  
 		do  
 			sleep 1
-			tpid=`ps -ef|grep -n " \-\-name=$APP_NAME$"|grep -v grep|grep -v kill|awk '{print $3}'`
+			tpid=`ps -ef|grep -n " java.*--name=$APP_NAME$"|grep -v grep|grep -v kill|awk '{print $2}'`
 			if [ ${tpid} ]; then
 				echo -e ".\c"
 			else
@@ -59,7 +59,7 @@ function stop() {
 			fi
 		done
 		# 强制杀死进程
-		tpid=`ps -ef|grep -n " \-\-name=$APP_NAME$"|grep -v grep|grep -v kill|awk '{print $3}'`
+		tpid=`ps -ef|grep -n " java.*--name=$APP_NAME$"|grep -v grep|grep -v kill|awk '{print $2}'`
 		if [ ${tpid} ]; then
 		    echo 'Kill Process!'
 		    kill -9 ${tpid}
@@ -71,9 +71,9 @@ function stop() {
 
 function list () {
 	if [ ${APP_NAME} == "all" ]; then
-		echo `ps -ef | grep -n "java.*--name="|grep -v grep|grep -v kill|awk '{printf $3"\t"$9"\t"} {split($12,b,"=");print b[2]}' `
+		echo `ps -ef | grep -n "java.*--name="|grep -v grep|grep -v kill|awk '{printf $2"\t"$8"\t"} {split($11,b,"=");print b[2]}' `
 	else
-		echo `ps -ef | grep -n "java.*--name=${APP_NAME}$"|grep -v grep|grep -v kill|awk '{printf $3"\t"$9"\t"} {split($12,b,"=");print b[2]}' `
+		echo `ps -ef | grep -n "java.*--name=${APP_NAME}$"|grep -v grep|grep -v kill|awk '{printf $2"\t"$8"\t"} {split($11,b,"=");print b[2]}' `
 	fi
 }
 
