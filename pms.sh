@@ -88,16 +88,21 @@ function stop() {
 function list () {
 	if [ ${APP_NAME} == "all" ]; then
 		if [ ${SYSTEM} == 'Linux' ]; then
-			echo `ps -ef | grep -n "java.*--name="|grep -v grep|grep -v kill|awk '{printf $2"\t"$8"\t"} {split($11,b,"=");print b[2]}' `
+			res=`ps -ef | grep -n "java.*--name="|grep -v grep|grep -v kill|awk '{printf $2"\t"$8"\t"} {split($11,b,"=");print b[2]}' `
 		else
-			echo `ps -ef | grep -n "java.*--name="|grep -v grep|grep -v kill|awk '{printf $3"\t"$9"\t"} {split($12,b,"=");print b[2]}' `
+			res=`ps -ef | grep -n "java.*--name="|grep -v grep|grep -v kill|awk '{printf $3"\t"$9"\t"} {split($12,b,"=");print b[2]}' `
 		fi
 	else
 		if [ ${SYSTEM} == 'Linux' ]; then
-			echo `ps -ef | grep -n "java.*--name=${APP_NAME}$"|grep -v grep|grep -v kill|awk '{printf $2"\t"$8"\t"} {split($11,b,"=");print b[2]}' `
+			res=`ps -ef | grep -n "java.*--name=${APP_NAME}$"|grep -v grep|grep -v kill|awk '{printf $2"\t"$8"\t"} {split($11,b,"=");print b[2]}' `
 		else
-			echo `ps -ef | grep -n "java.*--name=${APP_NAME}$"|grep -v grep|grep -v kill|awk '{printf $3"\t"$9"\t"} {split($12,b,"=");print b[2]}' `
+			res=`ps -ef | grep -n "java.*--name=${APP_NAME}$"|grep -v grep|grep -v kill|awk '{printf $3"\t"$9"\t"} {split($12,b,"=");print b[2]}' `
 		fi
+	fi
+	if [ -z ${res}]; then
+		echo "None app running!"
+	else
+		echo ${res}
 	fi
 }
 
