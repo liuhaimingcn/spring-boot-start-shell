@@ -38,7 +38,7 @@ function start() {
 		echo "App already running!"
 	else
 		echo "start..."
-		`nohup java -jar ${filePah} --name=${APP_NAME} > /tmp/${APP_NAME}Nohup.log 2>&1 &`
+		`nohup java -jar ${filePah} --name=${APP_NAME} > /dev/null 2>&1 &`
 		check
 		echo "Start success!"
 	fi
