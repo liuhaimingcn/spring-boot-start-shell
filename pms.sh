@@ -7,7 +7,7 @@ RUNNING="false";
 # 检查应用是否在运行
 function check() {
 	echo "check running status..."
-	if [ ${SYSTEM} == 'Linux' ]; then
+	if [ "${SYSTEM}" == 'Linux' ]; then
 		tpid=`ps -ef|grep -n " java.*--name=$APP_NAME$"|grep -v grep|grep -v kill|awk '{print $2}'`
 	else
 		tpid=`ps -ef|grep -n " java.*--name=$APP_NAME$"|grep -v grep|grep -v kill|awk '{print $3}'`
@@ -99,7 +99,7 @@ function list () {
 			res=`ps -ef | grep -n "java.*--name=${APP_NAME}$"|grep -v grep|grep -v kill|awk '{printf $3"\t"$9"\t"} {split($12,b,"=");print b[2]}' `
 		fi
 	fi
-	if [ -z ${res}]; then
+	if [ -z "$res" ]; then
 		echo "None app running!"
 	else
 		echo ${res}
