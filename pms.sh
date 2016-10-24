@@ -38,7 +38,7 @@ function start() {
 		echo "App already running!"
 	else
 		echo "start..."
-		`nohup java -jar ${filePah} -Dspring.profiles.active="dev" --name=${APP_NAME} > /dev/null 2>&1 &`
+		`nohup java -Dspring.profiles.active="dev" -jar ${filePah} --name=${APP_NAME} > /dev/null 2>&1 &`
 		check
 		echo "Start success!"
 	fi
