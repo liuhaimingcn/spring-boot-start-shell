@@ -105,7 +105,7 @@ function list () {
 	fi
 	if [ -z "$res" ]; then
 		echo "None app running!"
-	else
+	fi
 }
 
 # 参数检查
