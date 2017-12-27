@@ -1,5 +1,5 @@
-# springboot-start-shell
-用来启动 停止 springboot应用的脚本
+# spring-boot-start-shell
+用来启动 停止 spring-boot应用的脚本
 
 ## start 启动应用
 
