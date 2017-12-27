@@ -6,7 +6,7 @@
 * start 后面可以跟相对路径和绝对路径, 最后的文件名来作为AppName
 
 ``` sh
-➜  springboot-start-shell git:(master) ./pms.sh start /Users/liuhaiming/Documents/workspace/raventech/code/nlp/nlp-user/target/nlpUser.jar
+➜ ./sbm.sh start /Users/liuhaiming/nlp-user/target/nlpUser.jar
 check running status...
 
 App is NOT running.
@@ -19,10 +19,10 @@ Start success!
 ## check 检查应用的状态
 
 ``` sh
-➜  springboot-start-shell git:(master) ./pms.sh check nlpUser
+➜ ./sbm.sh check nlpUser
 check running status...
 App is running.
-➜  springboot-start-shell git:(master) ✗ ./pms.sh check nlp
+➜ ./sbm.sh check nlp
 check running status...
 App is NOT running.
 ```
@@ -30,20 +30,20 @@ App is NOT running.
 ## stop 停止应用
 
 ``` sh
-➜  springboot-start-shell git:(master) ✗ ./pms.sh stop nlpUser
+➜ ./sbm.sh stop nlpUser
 Stop Process...
 Stop Success!
-➜  springboot-start-shell git:(master) ✗ ./pms.sh stop nlp
+➜ ./sbm.sh stop nlp
 App already stop!
 ```
 
 ## list 列出所有运行中的应用
 
 ``` sh
-➜  springboot-start-shell git:(master) ✗ ./pms.sh list all
+➜ ./sbm.sh list all
 80569 java nlpUser
-➜  springboot-start-shell git:(master) ✗ ./pms.sh list nlpUser
+➜ ./sbm.sh list nlpUser
 80569 java nlpUser
-➜  springboot-start-shell git:(master) ✗ ./pms.sh list nlp
+➜ ./sbm.sh list nlp
 
 ```
